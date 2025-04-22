@@ -41,5 +41,9 @@ RSpec.describe StringCalculator do
     expect(calc.add("//[***]\n1***2")).to eq(3)
   end
 
+	it "raise error when negative numbers are present in the string" do
+		calc = StringCalculator.new
+		expect { calc.add("//[***]\n-11***-2") }.to raise_error("negative numbers not allowed -11, -2")
+	end
 end
 
