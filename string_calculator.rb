@@ -18,13 +18,16 @@ class StringCalculator
 	def get_seperators(string_num)
 		if(string_num.start_with?("//"))
 			seperators_part  = string_num[2..-1].split("\n", 2).first
+			seperators = seperators_part.match(/\[(.*?)\]/)
+			(DEFINED_SEPERATORS <<  seperators[1]).uniq if seperators
 		else
-			separators = DEFINED_SEPERATORS
+			DEFINED_SEPERATORS
 		end
 	end
 
 	def extract_string_num(string_num)
 		if(string_num.start_with?("//"))
+			string_num[2..-1].split("\n", 2).last
 		else
 			string_num
 		end

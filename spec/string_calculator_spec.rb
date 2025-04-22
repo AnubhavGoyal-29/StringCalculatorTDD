@@ -33,7 +33,7 @@ RSpec.describe StringCalculator do
 
 	it "returns the sum of numbers separated by custom seperator" do
 		calc = StringCalculator.new
-		expect(calc.add("//;\n1;2")).to eq(3)
+		expect(calc.add("//[;]\n1;2")).to eq(3)
 	end
 end
 
