@@ -20,8 +20,8 @@ class StringCalculator
 	def get_seperators(string_num)
 		if(string_num.start_with?("//"))
 			seperators_part  = string_num[2..-1].split("\n", 2).first
-			seperators = seperators_part.match(/\[(.*?)\]/)
-			(DEFINED_SEPERATORS <<  seperators[1]).uniq if seperators
+			seperators = seperators_part.scan(/\[(.*?)\]/)&.flatten || []
+			(DEFINED_SEPERATORS + seperators).uniq if seperators
 		else
 			DEFINED_SEPERATORS
 		end
