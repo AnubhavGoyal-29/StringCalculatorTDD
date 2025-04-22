@@ -14,7 +14,7 @@ class StringCalculator
 		negative_numbers = numbers.map(&:to_i).collect { |num| num if num < 0 }.compact
 		raise "negative numbers not allowed #{negative_numbers.join(', ')}" if !negative_numbers.empty?
 
-		return numbers.map(&:to_i).sum
+		return numbers.map(&:to_i).collect { |num| num if num <= 1000}.compact.sum
 	end
 
 	def get_seperators(string_num)
