@@ -1,5 +1,5 @@
 class StringCalculator
-	DEFINED_SEPERATORS = [",", "\n", ";", ":"]
+	DEFINED_SEPERATORS = [",", "\n"]
 	def add(string_num)
 		return 0 if string_num.empty?
 		seperators = get_seperators(string_num)
