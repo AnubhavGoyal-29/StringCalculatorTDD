@@ -23,7 +23,18 @@ RSpec.describe StringCalculator do
 
 	it "returns the sum of numbers separated by a enter" do
     calc = StringCalculator.new
-    expect(calc.add("1/\n2")).to eq(3)
+    expect(calc.add("1\n2")).to eq(3)
   end
+
+	it "returns the sum of numbers separated by different seperators" do
+    calc = StringCalculator.new
+    expect(calc.add("1\n2,3:4;5")).to eq(15)
+  end
+	"//;\n1;2"
+
+	it "returns the sum of numbers separated by custom seperator" do
+		calc = StringCalculator.new
+		expect(calc.add("//;\n1;2")).to eq(3)
+	end
 end
 
