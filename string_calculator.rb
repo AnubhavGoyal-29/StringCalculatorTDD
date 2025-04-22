@@ -1,9 +1,7 @@
-require 'byebug'
 class StringCalculator
 	DEFINED_SEPERATORS = [",", "\n", ";", ":"]
 	def add(string_num)
 		return 0 if string_num.empty?
-		byebug
 		seperators = get_seperators(string_num)
 		string_num = extract_string_num(string_num)
 		numbers = string_num.split(Regexp.union(seperators)).map { |num| 
@@ -11,7 +9,11 @@ class StringCalculator
 		}
 		numbers.each do |num|
       raise "Invalid number: '#{num}'" unless num =~ /^-?\d+$/
-    end
+		end
+
+		negative_numbers = numbers.map(&:to_i).collect { |num| num if num < 0 }.compact
+		raise "negative numbers not allowed #{negative_numbers.join(', ')}" if !negative_numbers.empty?
+
 		return numbers.map(&:to_i).sum
 	end
 
